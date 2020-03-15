@@ -92,15 +92,22 @@ opkg install node node-npm
 ```
 opkg install php7 php7-cgi php7-cli
 opkg install php7-mod-mbstring php7-mod-zip \
-    php7-mod-sqlite3 php7-mod-pcntl php7-mod-openssl \
+    php7-mod-pdo-sqlite php7-mod-pcntl php7-mod-openssl \
     php7-mod-hash php7-mod-json php7-mod-phar \
-    php7-mod-pdo
+    php7-mod-pdo php7-mod-fileinfo
 
 vim /etc/config/uhttpd
 # list interpreter ".php=/usr/bin/php-cgi"
 # option index_page 'index.php'
 
 /etc/init.d/uhttpd restart
+```
+
+You have to set a timezone in `/etc/php.ini`.
+Take one of the timezones you have in `/usr/share/zoneinfo/`.
+
+```
+date.timezone = GMT+1
 ```
 
 ## TODO
